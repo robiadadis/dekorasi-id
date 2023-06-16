@@ -37,7 +37,8 @@
         onSuccess: function(result){
           /* You may add your own implementation here */
           // alert("payment success!");
-          window.location.href = '/invoice/{{ $order->id }}'
+          // window.location.href = '/invoice/{{ $order->id }}'
+          window.location.href = '/account'
           console.log(result);
         },
         onPending: function(result){

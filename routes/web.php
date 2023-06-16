@@ -2,12 +2,13 @@
 
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardProductController;
-use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\DashboardProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,9 @@ Route::get('/dashboard', function(){
 Route::resource('/dashboard/categories', AdminCategoryController::class)->middleware('isAdmin');
 Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('isAdmin');
 Route::resource('/dashboard/products', DashboardProductController::class)->middleware('isAdmin');
+
+// Account
+Route::get('/account', [UserController::class, 'account'])->middleware('auth');
 
 // Midtrans
 Route::post('/checkout', [OrdersController::class, 'checkout'])->middleware('auth');
